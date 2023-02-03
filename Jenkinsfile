@@ -34,5 +34,10 @@ pipeline{
                 '''   
             }
         }
+        stage('Terraform version'){
+            steps{
+                sh 'terraform -v'
+            }
+        }
     }
 }

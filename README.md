@@ -21,3 +21,7 @@ Once you have set the local Jenkins, create a job as suggested:
 
 ## Terraform integration
 W I P
+
+I tried to use the terraform tool as part of Jenkins, but it seems not to work in Windows.
+So, an easy way to get terraform workin from Jenkins, I downloaded the zip and then I copied the file in the local volume, then, inside the container, I moved the file from the container volume to /usr/local/bin. I verified with # terraform -v and I got the version.
+Then from jenkins I prompted the version and it was printed in the console, so it is a way to easy use terraform in the job.
