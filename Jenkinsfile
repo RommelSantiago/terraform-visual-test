@@ -36,7 +36,7 @@ pipeline{
         }
         stage('Terraform Format/Validate'){
             failFast true
-            paralel{
+            parallel{
                 stage('terraform Format'){
                     steps {
                         sh 'terraform fmt'
