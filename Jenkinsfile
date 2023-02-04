@@ -34,10 +34,26 @@ pipeline{
                 '''   
             }
         }
-        stage('Terraform version'){
-            steps{
-                sh 'terraform -v'
+        stage('Terraform Format/Validate'){
+            failFast true
+            paralel{
+                stage('terraform Format'){
+                    steps {
+                        sh 'terraform fmt'
+                    }
+                }
+                stage('terraform Validate'){
+                    steps {
+                        sh '''
+                            terraform init 
+                            terraform validate
+                        '''        
+                    }
+                }
             }
+        }
+        stage('Terraform Plan'){
+            sh 'terraform plan'
         }
     }
 }
