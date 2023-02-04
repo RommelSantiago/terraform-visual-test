@@ -52,8 +52,10 @@ pipeline{
                 }
             }
         }
-        stage('Terraform Plan'){
-            sh 'terraform plan'
-        }
+        /*stage('Terraform Plan'){
+            steps {
+                sh 'terraform plan'
+            }
+        }*/
     }
 }
