@@ -57,7 +57,7 @@ pipeline{
                 sh 'terraform plan'
             }
         }
-        stage(){
+        stage('Deploy'){
             when {
                 branch 'qa'
             }
