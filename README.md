@@ -1,6 +1,7 @@
 # Laboratorio
 
 This repository is intended to get the first steps and evolve from it, to achieve the laboratory as best completed as posible. 
+Two branches have been added to the repo; The development branch is the one that has the most recent updates.
 
 ## Setup
 The first step is to get started with a local installation for Jenkins. You can view
