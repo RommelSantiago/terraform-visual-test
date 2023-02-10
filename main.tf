@@ -9,12 +9,12 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = var.region
 }
 
 resource "aws_instance" "my_server" {
-  ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
+  ami           = var.ami
+  instance_type = var.instance_type
 
   tags = {
   Name = "my test server"
