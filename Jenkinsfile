@@ -57,5 +57,26 @@ pipeline{
                 sh 'terraform plan'
             }
         }
+        stage(){
+            when {
+                branch 'qa'
+            }
+            steps {
+                sh '''
+                terraform apply --auto-aprove
+                '''
+            }
+        }
+    }
+    post {
+        success { 
+            sh 'echo Completed...'
+        }
+        failure {
+            sh 'Something went wrong'
+        }
+        cleanup {
+            sh 'rm -rf *'
+        }
     }
 }
