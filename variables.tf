@@ -10,7 +10,7 @@ variable "ami" {
     default = "ami-830c94e3"
 }
 
-varibale "instance_type" {
+variable "instance_type" {
     type = string
     description = "The instance type"
     default = "t2.micro"
