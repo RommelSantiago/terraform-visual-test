@@ -45,7 +45,9 @@ pipeline{
                 stage('terraform Validate'){
                     steps {
                         sh '''
-                            terraform init 
+                            pwd
+                            ls -l
+                            terraform init -backend=false
                             terraform validate
                         '''        
                     }
