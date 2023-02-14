@@ -39,7 +39,7 @@ pipeline{
             parallel{
                 stage('terraform Format'){
                     steps {
-                        sh 'terraform fmt'
+                        sh 'terraform fmt -recursive -check=true'
                     }
                 }
                 stage('terraform Validate'){
