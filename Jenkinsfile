@@ -68,8 +68,8 @@ pipeline{
                 terraform apply --auto-aprove
                 '''
             }
-        }
-    }*/
+        }*/
+    }
     post {
         success { 
             sh 'echo Completed...'
@@ -77,8 +77,8 @@ pipeline{
         failure {
             sh 'Something went wrong'
         }
-        cleanup {
-            //sh 'rm -rf *'
-        }
+        /*cleanup {
+            sh 'rm -rf *'
+        }*/
     }
 }
