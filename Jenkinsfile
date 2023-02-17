@@ -30,7 +30,9 @@ pipeline{
                    aws configure set id.region $AWS_DEFAULT_REGION
                    rm awskey
                    rm awssecret
-                   echo  "Helo aws"
+                   echo 'working directory:' 
+                   pwd
+                   ls -l
                 '''   
             }
         }
@@ -52,7 +54,7 @@ pipeline{
                 }
             }
         }
-        stage('Terraform Plan'){
+     /*   stage('Terraform Plan'){
             steps {
                 sh 'docker run hieven/terraform-visual-cli:0.1.0-0.12.29 plan'
             }
@@ -67,7 +69,7 @@ pipeline{
                 '''
             }
         }
-    }
+    }*/
     post {
         success { 
             sh 'echo Completed...'
@@ -76,7 +78,7 @@ pipeline{
             sh 'Something went wrong'
         }
         cleanup {
-            sh 'rm -rf *'
+            //sh 'rm -rf *'
         }
     }
 }
