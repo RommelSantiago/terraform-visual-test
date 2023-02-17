@@ -78,7 +78,7 @@ pipeline{
             sh 'Something went wrong'
         }
         cleanup {
-            sh 'rm -rf *'
+            //sh 'rm -rf *'
         }
     }
 }
