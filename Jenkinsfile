@@ -39,14 +39,14 @@ pipeline{
             parallel{
                 stage('terraform Format'){
                     steps {
-                        sh 'docker run -i -t hieven/terraform-visual-cli:0.1.0-0.12.29 fmt -recursive -check=true'
+                        sh 'docker run hieven/terraform-visual-cli:0.1.0-0.12.29 fmt -recursive -check=true'
                     }
                 }
                 stage('terraform Validate'){
                     steps {
                         sh '''
-                            docker run -i -t hieven/terraform-visual-cli:0.1.0-0.12.29 init
-                            docker run -i -t hieven/terraform-visual-cli:0.1.0-0.12.29 validate
+                            docker run hieven/terraform-visual-cli:0.1.0-0.12.29 init
+                            docker run hieven/terraform-visual-cli:0.1.0-0.12.29 validate
                         '''        
                     }
                 }
@@ -54,7 +54,7 @@ pipeline{
         }
         stage('Terraform Plan'){
             steps {
-                sh 'docker run -i -t hieven/terraform-visual-cli:0.1.0-0.12.29 plan'
+                sh 'docker run hieven/terraform-visual-cli:0.1.0-0.12.29 plan'
             }
         }
         stage('Deploy'){
