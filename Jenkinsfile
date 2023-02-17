@@ -54,7 +54,7 @@ pipeline{
                 }
             }
         }
-     /*   stage('Terraform Plan'){
+     stage('Terraform Plan'){
             steps {
                 sh 'docker run hieven/terraform-visual-cli:0.1.0-0.12.29 plan'
             }
@@ -68,7 +68,7 @@ pipeline{
                 terraform apply --auto-aprove
                 '''
             }
-        }*/
+        }
     }
     post {
         success { 
