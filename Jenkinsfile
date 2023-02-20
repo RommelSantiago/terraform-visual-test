@@ -41,14 +41,17 @@ pipeline{
             parallel{
                 stage('terraform Format'){
                     steps {
-                        sh 'docker run hieven/terraform-visual-cli:0.1.0-0.12.29 fmt -recursive -check=true'
+                        sh 'echo pwd:'
+                        sh 'pwd'
+                        sh 'ls -l'
+                        sh 'docker run -v /var/jenkins_home/workspace/terraform-visual/:/var/jenkins_home/workspace/terraform-visual/ -w /var/jenkins_home/workspace/terraform-visual hieven/terraform-visual-cli:0.1.0-0.12.29 fmt -recursive -check=true'
                     }
                 }
                 stage('terraform Validate'){
                     steps {
                         sh '''
-                            docker run hieven/terraform-visual-cli:0.1.0-0.12.29 init
-                            docker run hieven/terraform-visual-cli:0.1.0-0.12.29 validate
+                            docker run -v /var/jenkins_home/workspace/terraform-visual/:/var/jenkins_home/workspace/terraform-visual/ -w /var/jenkins_home/workspace/terraform-visual hieven/terraform-visual-cli:0.1.0-0.12.29 init
+                            docker run -v /var/jenkins_home/workspace/terraform-visual/:/var/jenkins_home/workspace/terraform-visual/ -w /var/jenkins_home/workspace/terraform-visual hieven/terraform-visual-cli:0.1.0-0.12.29 validate
                         '''        
                     }
                 }
