@@ -1,5 +1,11 @@
 pipeline{
-    agent any
+    agent {
+        docker {
+            image 'hashicorp/terraform:latest'
+            label 'LINUX-SLAVE'
+            args '--entrypoint="" -u root -v $PWD:/data -w /data'
+        }
+    }
     environment {
         AWS_DEFAULT_REGION="us-east-1"
     }
@@ -41,8 +47,8 @@ pipeline{
         stage('Terraform Plan'){
             steps {
                 sh '''
-                   docker run --rm  -v $PWD:/data -w /data hashicorp/terraform:latest init
-                   docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 plan
+                   terraform init
+                   plan
                 '''
             }
         }
