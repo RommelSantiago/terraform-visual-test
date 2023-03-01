@@ -8,7 +8,7 @@ pipeline{
             steps {
                 withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]){
                 sh '''
-                aws --version
+                /usr/local/bin/aws --version
                 awskey=$AWS_ACCESS_KEY_ID
                 awssecret=$AWS_SECRET_ACCESS_KEY
                 echo $awskey > awskey
