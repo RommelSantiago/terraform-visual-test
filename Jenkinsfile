@@ -32,34 +32,18 @@ pipeline{
                    rm awssecret
                    echo 'working directory:' 
                    pwd
-                   ls -l
+                   ls -la
+                   echo 'whoami'
+                   whoami
                 '''   
             }
         }
-        stage('Terraform Format/Validate'){
-            failFast true
-            parallel{
-                stage('terraform Format'){
-                    steps {
-                        sh 'echo pwd:'
-                        sh 'pwd'
-                        sh 'ls -l'
-                        sh 'docker run -v /var/jenkins_home/workspace/terraform-visual/:/var/jenkins_home/workspace/terraform-visual/ -w /var/jenkins_home/workspace/terraform-visual hieven/terraform-visual-cli:0.1.0-0.12.29 fmt -recursive -check=true'
-                    }
-                }
-                stage('terraform Validate'){
-                    steps {
-                        sh '''
-                            docker run -v /var/jenkins_home/workspace/terraform-visual/:/var/jenkins_home/workspace/terraform-visual/ -w /var/jenkins_home/workspace/terraform-visual hieven/terraform-visual-cli:0.1.0-0.12.29 init
-                            docker run -v /var/jenkins_home/workspace/terraform-visual/:/var/jenkins_home/workspace/terraform-visual/ -w /var/jenkins_home/workspace/terraform-visual hieven/terraform-visual-cli:0.1.0-0.12.29 validate
-                        '''        
-                    }
-                }
-            }
-        }
-     stage('Terraform Plan'){
+        stage('Terraform Plan'){
             steps {
-                sh 'docker run hieven/terraform-visual-cli:0.1.0-0.12.29 plan'
+                sh '''
+                   docker run -rm -ti -v $PWD:/data -w /data hashicorp/terraform:latest init
+                   docker run -rm -ti -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 plan
+                '''
             }
         }
         stage('Deploy'){
