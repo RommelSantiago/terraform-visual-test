@@ -41,8 +41,8 @@ pipeline{
         stage('Terraform Plan'){
             steps {
                 sh '''
-                   docker run -rm -ti -v $PWD:/data -w /data hashicorp/terraform:latest init
-                   docker run -rm -ti -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 plan
+                   docker run --rm -ti -v $PWD:/data -w /data hashicorp/terraform:latest init
+                   docker run --rm -ti -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 plan
                 '''
             }
         }
