@@ -24,10 +24,10 @@ pipeline{
                    set +x
                    key=$(cat awskey)
                    secret=$(cat awssecret)
-                   aws configure set aws_access_key_id $key --profile default
-                   aws configure set aws_secret_access_key $secret --profile default
-                   aws configure set default.region $AWS_DEFAULT_REGION
-                   aws configure set id.region $AWS_DEFAULT_REGION
+                   /usr/local/bin/aws configure set aws_access_key_id $key --profile default
+                   /usr/local/bin/aws configure set aws_secret_access_key $secret --profile default
+                   /usr/local/bin/aws configure set default.region $AWS_DEFAULT_REGION
+                   /usr/local/bin/aws configure set id.region $AWS_DEFAULT_REGION
                    rm awskey
                    rm awssecret
                    echo 'working directory:' 
@@ -41,8 +41,9 @@ pipeline{
         stage('Terraform Plan'){
             steps {
                 sh '''
-                   docker run --rm  -v $PWD:/data -w /data hashicorp/terraform:latest init
-                   docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 plan
+                   /usr/local/bin/docker --version
+                   /usr/local/bin/docker run --rm  -v $PWD:/data -w /data hashicorp/terraform:latest init
+                   /usr/local/bin/docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 plan
                 '''
             }
         }
