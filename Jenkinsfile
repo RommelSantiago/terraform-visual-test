@@ -41,6 +41,7 @@ pipeline{
         stage('Terraform Plan'){
             steps {
                 sh '''
+                   cat /Users/rommel/.aws/credentials
                    /usr/local/bin/docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 --version
                    /usr/local/bin/docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 init
                    /usr/local/bin/docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 plan -out=plan.out
