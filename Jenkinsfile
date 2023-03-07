@@ -28,8 +28,8 @@ pipeline{
                    /usr/local/bin/aws configure set aws_secret_access_key $secret --profile default
                    /usr/local/bin/aws configure set default.region $AWS_DEFAULT_REGION
                    /usr/local/bin/aws configure set id.region $AWS_DEFAULT_REGION
-                   export AWS_ACCESS_KEY_ID=$awskey
-                   export AWS_SECRET_ACCESS_KEY=$awssecret  
+                   TF_VAR_my_access_key=$awskey
+                   TF_VAR_my_secret_key=$awssecret
                    rm awskey
                    rm awssecret
                    echo 'working directory:' 
