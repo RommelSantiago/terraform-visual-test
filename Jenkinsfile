@@ -43,7 +43,7 @@ pipeline{
                 sh '''
                    /usr/local/bin/docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 --version
                    /usr/local/bin/docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 init
-                   /usr/local/bin/docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 plan -var-file=$PWD/vars.tfvars -out=plan.out
+                   /usr/local/bin/docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 plan -var-file=vars.tfvars -out=plan.out
                    /usr/local/bin/docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 show -json plan.out > plan.json
                    /usr/local/bin/docker run --rm  -v $PWD:/data -w /data hieven/terraform-visual-cli:0.1.0-0.12.29 --plan plan.json
                    open terraform-visual-report/index.html
