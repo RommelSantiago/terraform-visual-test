@@ -4,10 +4,9 @@ This repository is intended to evaluate the terraform-visual tool as best comple
 The development branch has the most recent updates.
 
 ## Fundamentals
-– It generates a visual report of the Terraform plan.
-– It helps you to visualize the plan.
-– It can be used on three different  
-   Ways:
+* It generates a visual report of the Terraform plan.
+* It helps you to visualize the plan.
+* It can be used on three different Ways:
 
 On-line
 Terraform Visual CLI
